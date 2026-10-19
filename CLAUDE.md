@@ -63,3 +63,15 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## Cross-checking with GPT (Codex CLI)
+
+When the user asks for a GPT/Codex opinion or cross-check, run the Codex CLI and compare its answer with your own:
+
+```
+codex exec -s read-only "<question, with the relevant files or diff named>"
+```
+
+- `-s read-only`: Codex gives an opinion only and must not edit files.
+- Codex uses the user's ChatGPT login (`codex login`), not an API key. If it reports not being logged in, tell the user to run `codex login`; never fall back to an API key.
+- Report where Codex and you agree and disagree; don't just paste its output.
