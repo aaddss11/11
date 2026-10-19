@@ -2,21 +2,45 @@
   "mcpServers": {
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     },
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "."
+      ]
     },
     "brave-search": {
       "command": "npx",
-      "args": ["-y", "@brave/brave-search-mcp-server"],
+      "args": [
+        "-y",
+        "@brave/brave-search-mcp-server"
+      ],
       "env": {
         "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      }
+    },
+    "figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "figma-developer-mcp",
+        "--stdio"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
       }
     }
   }
