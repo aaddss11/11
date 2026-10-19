@@ -51,6 +51,17 @@
       "env": {
         "OPENAI_API_KEY": "${OPENAI_API_KEY}"
       }
+    },
+    "codex": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openai/codex@0.153.4",
+        "mcp-server"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
     }
   }
 }
