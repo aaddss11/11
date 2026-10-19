@@ -32,17 +32,6 @@
         "BRAVE_API_KEY": "${BRAVE_API_KEY}"
       }
     },
-    "figma": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "figma-developer-mcp",
-        "--stdio"
-      ],
-      "env": {
-        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
-      }
-    },
     "youtube": {
       "command": "npx",
       "args": [
