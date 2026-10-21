@@ -9,10 +9,11 @@ Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-s
 **Don't assume. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
+- State your assumptions explicitly. If uncertain, check the repo first.
+- For small, reversible choices, state the assumption and proceed. Ask only when the ambiguity affects requirements, security, or data loss.
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+- If something unclear meets that bar, stop. Name what's confusing. Ask.
 
 ## 2. Simplicity First
 
@@ -60,6 +61,8 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+Stop looping when the same failure repeats or the environment blocks progress. Report the cause and what remains unverified. Never describe a check you didn't run as passing.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
@@ -72,6 +75,6 @@ When the user asks for a GPT/Codex opinion or cross-check, run the Codex CLI and
 codex exec -s read-only "<question, with the relevant files or diff named>"
 ```
 
-- `-s read-only`: Codex gives an opinion only and must not edit files.
+- `-s read-only`: blocks file writes only. Codex can still run commands and use network/MCP tools, and the files it reads are sent to the model, so don't point it at secrets.
 - Codex uses the user's ChatGPT login (`codex login`), not an API key. If it reports not being logged in, tell the user to run `codex login`; never fall back to an API key.
 - Report where Codex and you agree and disagree; don't just paste its output.
