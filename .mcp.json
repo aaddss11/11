@@ -47,7 +47,11 @@
       "args": [
         "basic-memory",
         "mcp"
-      ]
+      ],
+      "env": {
+        "BASIC_MEMORY_HOME": "memory",
+        "BASIC_MEMORY_CONFIG_DIR": ".basic-memory"
+      }
     }
   }
 }
