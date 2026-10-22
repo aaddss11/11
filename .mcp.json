@@ -12,7 +12,11 @@
       "args": [
         "-y",
         "@upstash/context7-mcp"
-      ]
+      ],
+      "env": {
+        "NODE_EXTRA_CA_CERTS": "",
+        "NODE_USE_SYSTEM_CA": "1"
+      }
     },
     "filesystem": {
       "command": "npx",
