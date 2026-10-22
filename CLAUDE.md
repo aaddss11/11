@@ -92,6 +92,5 @@ When the user asks to build an LLM app or agent, first look in the `awesome-llm-
 The `basic-memory` MCP server stores notes as Markdown in `memory/`, and a Stop hook commits them onto `main` and pushes `main` after each response, whatever branch is checked out.
 
 - On other branches, `memory/` changes stay uncommitted in the working tree but are already on `main`: don't commit them to the branch, and if they block a merge or pull, discard them (`git checkout -- memory`, delete untracked notes) first.
-
 - Without being asked, save a note with `write_note` when you learn something worth keeping across sessions: a decision and its reason, a user preference, a project fact that took effort to find. Don't save routine task chatter or anything secret.
 - Before starting work, `search_notes` for related notes and build on them; update an existing note rather than writing a duplicate.
