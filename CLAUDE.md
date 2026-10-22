@@ -78,3 +78,11 @@ codex exec -s read-only "<question, with the relevant files or diff named>"
 - `-s read-only`: blocks file writes only. Codex can still run commands and use network/MCP tools, and the files it reads are sent to the model, so don't point it at secrets.
 - Codex uses the user's ChatGPT login (`codex login`), not an API key. If it reports not being logged in, tell the user to run `codex login`; never fall back to an API key.
 - Report where Codex and you agree and disagree; don't just paste its output.
+
+## Reference apps (awesome-llm-apps)
+
+When the user asks to build an LLM app or agent, first look in the `awesome-llm-apps/` submodule (run `git submodule update --init` if it is empty) for similar apps, and tell the user which ones you found and what you'd reuse from them before writing code.
+
+- Search by goal: `rag_tutorials/` (Q&A over documents), `starter_ai_agents/` and `advanced_ai_agents/` (agents), `advanced_ai_agents/multi_agent_apps/` (agent teams), `mcp_ai_agents/` (MCP), `voice_ai_agents/` (voice).
+- Check each app's `requirements.txt` for its provider (openai, anthropic, google-genai, ollama) and say which API key it needs.
+- Treat them as reference code: copy only what is needed into this repo, adapted to the task, rather than importing from the submodule.
