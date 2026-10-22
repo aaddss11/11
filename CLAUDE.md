@@ -86,3 +86,10 @@ When the user asks to build an LLM app or agent, first look in the `awesome-llm-
 - Search by goal: `rag_tutorials/` (Q&A over documents), `starter_ai_agents/` and `advanced_ai_agents/` (agents), `advanced_ai_agents/multi_agent_apps/` (agent teams), `mcp_ai_agents/` (MCP), `voice_ai_agents/` (voice).
 - Check each app's `requirements.txt` for its provider (openai, anthropic, google-genai, ollama) and say which API key it needs.
 - Treat them as reference code: copy only what is needed into this repo, adapted to the task, rather than importing from the submodule.
+
+## Basic Memory
+
+The `basic-memory` MCP server stores notes as Markdown in `memory/`, and a Stop hook commits and pushes them after each response.
+
+- Without being asked, save a note with `write_note` when you learn something worth keeping across sessions: a decision and its reason, a user preference, a project fact that took effort to find. Don't save routine task chatter or anything secret.
+- Before starting work, `search_notes` for related notes and build on them; update an existing note rather than writing a duplicate.
