@@ -12,7 +12,10 @@
     ]
   },
   "enabledPlugins": {
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "superpowers@superpowers-marketplace": true,
+    "mattpocock-skills@mattpocock": true,
+    "andrej-karpathy-skills@karpathy-skills": true
   },
   "extraKnownMarketplaces": {
     "ecc": {
