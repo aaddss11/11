@@ -52,16 +52,6 @@
         "BASIC_MEMORY_HOME": "memory",
         "BASIC_MEMORY_CONFIG_DIR": ".basic-memory"
       }
-    },
-    "perplexity": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@perplexity-ai/mcp-server"
-      ],
-      "env": {
-        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
-      }
     }
   }
 }
