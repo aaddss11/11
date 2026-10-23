@@ -12,9 +12,13 @@ tags:
 - [decision] Removed brave-search from .mcp.json: Brave Search API dropped its free tier in early 2026 (card required, $5/month credit then billed). Use built-in WebSearch instead.
 - [decision] Added project-level chrome-devtools MCP pointing at /opt/pw-browsers/chromium with --headless --isolated --no-sandbox, because the ecc plugin's version looks for Google Chrome (absent) and Chrome won't run as root in the cloud container.
 - [fact] Cloud environment network policy blocks context7.com, api.search.brave.com, duckduckgo.com, bing.com, google.com (proxy 403). Free scraping-based search MCPs (e.g. lennney/agent-search-mcp) need those domains allowlisted first.
-- [todo] User-side: set YOUTUBE_API_KEY env var. gitlab plugin needs auth.
-- [decision] basic-memory semantic search fails (embedding model can't download), so .mcp.json sets BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED=false (PR #17) and plain search_notes runs text search. PR #21 pinned basic-memory==0.22.1 (0.24.0 crashes at startup) and made the notes path absolute ($(pwd)/memory) so notes arriving via git are indexed.
+- [todo] User-side: allow context7.com in environment Allowed domains; set YOUTUBE_API_KEY env var. gitlab plugin needs auth.
+- [fact] basic-memory semantic search fails (embedding model can't download); use search_type="text".
 
 - [fact] 2026-10-22: user allowed context7.com in the environment (desktop app: right panel 환경 → 기본 → gear icon). Network change applied to the running session immediately.
 - [decision] context7-mcp 4.4.4 fails TLS behind the session proxy because it passes the NODE_EXTRA_CA_CERTS bundle as one CA string. Fix in .mcp.json (PR #15): env NODE_EXTRA_CA_CERTS="" and NODE_USE_SYSTEM_CA=1 for context7 only.
 - [fact] Anonymous context7 quota is exhausted on the shared egress IP; needs a free key, best stored as a network secret for context7.com (Authorization: Bearer <key>).
+
+- [fact] 2026-10-23: YouTube MCP works with YOUTUBE_API_KEY as an environment variable (zubeid-youtube-mcp-server passes it to googleapis as the key= query param, so a header network secret would not work). Env var changes reach a session only after its VM restarts or in a new session.
+- [decision] basic-memory pinned to 0.22.1 (PR #21, from the Basic Memory session): 0.24.0 crashes on start with an ImportError against fastapi 0.161.1. Semantic search off (PR #17) because huggingface.co is blocked.
+- [fact] As of 2026-10-23 all repo MCP servers verified working in cloud sessions: context7, youtube, basic-memory, chrome-devtools, filesystem, sequential-thinking. GitLab plugin needs auth from claude.ai settings (not installed from this repo).
