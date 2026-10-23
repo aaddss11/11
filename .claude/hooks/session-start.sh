@@ -1,5 +1,5 @@
 #!/bin/bash
-# Fetch the awesome-llm-apps submodule, install the ECC, superpowers, mattpocock-skills, karpathy-skills and ponytail plugins and set ECC's hook profile to standard in cloud sessions.
+# Fetch the awesome-llm-apps submodule, install the ECC, superpowers, mattpocock-skills, karpathy-skills and ponytail plugins, the graphify CLI and set ECC's hook profile to standard in cloud sessions.
 set -euo pipefail
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
@@ -9,6 +9,8 @@ fi
 cd "$CLAUDE_PROJECT_DIR"
 
 git submodule update --init --depth 1
+
+command -v graphify >/dev/null || uv tool install graphifyy
 
 if ! claude plugin list --json 2>/dev/null | grep -q '"id": "ecc@ecc"'; then
   claude plugin marketplace add affaan-m/ECC
