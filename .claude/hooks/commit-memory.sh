@@ -4,6 +4,11 @@ set -uo pipefail
 
 cd "$CLAUDE_PROJECT_DIR" || exit 0
 
+# Keep memory/ out of git status on the checked-out branch: these notes go to main, not to the branch.
+exclude=$(git rev-parse --git-path info/exclude)
+grep -qxF '/memory/' "$exclude" 2>/dev/null || echo '/memory/' >> "$exclude"
+git ls-files -z memory | xargs -0 -r git update-index --skip-worktree
+
 [ -d memory ] || exit 0
 timeout 30 git fetch -q origin main || exit 0
 base=$(git rev-parse origin/main)
@@ -12,8 +17,8 @@ base=$(git rev-parse origin/main)
 idx=$(mktemp -d)/index
 trap 'rm -rf "$(dirname "$idx")"' EXIT
 GIT_INDEX_FILE=$idx git read-tree "$base"
-GIT_INDEX_FILE=$idx git rm -r -q --cached --ignore-unmatch memory
-GIT_INDEX_FILE=$idx git add memory
+# Add and update notes only: a note missing from this clone may come from another session, so never delete it from main.
+GIT_INDEX_FILE=$idx git add -f --ignore-removal memory
 tree=$(GIT_INDEX_FILE=$idx git write-tree)
 [ "$tree" = "$(git rev-parse "$base^{tree}")" ] && exit 0
 
