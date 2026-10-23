@@ -25,6 +25,11 @@ state=$(git rev-parse --git-path memory-synced)
 synced=$(cat "$state" 2>/dev/null || git rev-parse HEAD)
 # Add and update notes only: a note missing from this clone may come from another session, so never delete it from main.
 while IFS= read -r -d '' f; do
+  if ! git cat-file -e "$base:$f" 2>/dev/null && git show "$synced:$f" 2>/dev/null | cmp -s - "$f"; then
+    # Deleted on main and unchanged here since the last sync: drop it rather than adding it back.
+    rm -f -- "$f"
+    continue
+  fi
   if git show "$base:$f" > "$tmp/theirs" 2>/dev/null && ! cmp -s "$f" "$tmp/theirs"; then
     git show "$synced:$f" > "$tmp/base" 2>/dev/null || : > "$tmp/base"
     if cmp -s "$f" "$tmp/base"; then
@@ -35,11 +40,10 @@ while IFS= read -r -d '' f; do
   fi
   GIT_INDEX_FILE=$idx git update-index --add -- "$f"
 done < <(find memory -type f -print0)
+# The local notes now hold main's changes, so later runs merge against base even if the push below fails.
+echo "$base" > "$state"
 tree=$(GIT_INDEX_FILE=$idx git write-tree)
-if [ "$tree" = "$(git rev-parse "$base^{tree}")" ]; then
-  echo "$base" > "$state"
-  exit 0
-fi
+[ "$tree" = "$(git rev-parse "$base^{tree}")" ] && exit 0
 
 commit=$(git commit-tree "$tree" -p "$base" -m "Update Basic Memory notes")
 if ! timeout 30 git push -q origin "$commit:refs/heads/main"; then
