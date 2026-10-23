@@ -18,3 +18,5 @@ tags:
 - [fact] 2026-10-22: user allowed context7.com in the environment (desktop app: right panel 환경 → 기본 → gear icon). Network change applied to the running session immediately.
 - [decision] context7-mcp 4.4.4 fails TLS behind the session proxy because it passes the NODE_EXTRA_CA_CERTS bundle as one CA string. Fix in .mcp.json (PR #15): env NODE_EXTRA_CA_CERTS="" and NODE_USE_SYSTEM_CA=1 for context7 only.
 - [fact] Anonymous context7 quota is exhausted on the shared egress IP; needs a free key, best stored as a network secret for context7.com (Authorization: Bearer <key>).
+- [fact] 2026-10-23: unpinned `uvx basic-memory` resolved 0.24.0 with FastAPI 0.161.1. The server exits on startup with ImportError get_flat_dependant (FastAPI 0.143.0+ removed it; 0.140.0 still works). main pins basic-memory==0.22.1 (PR #21) instead.
+- [fact] Running a newer basic-memory once migrates the local index .basic-memory/memory.db (alembic revision 0042), after which 0.22.1 fails with "Can't locate revision '0042'". Fix: move .basic-memory/ aside (gitignored, rebuilt from memory/*.md).
