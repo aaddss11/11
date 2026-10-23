@@ -12,7 +12,11 @@
       "args": [
         "-y",
         "@upstash/context7-mcp"
-      ]
+      ],
+      "env": {
+        "NODE_EXTRA_CA_CERTS": "",
+        "NODE_USE_SYSTEM_CA": "1"
+      }
     },
     "filesystem": {
       "command": "npx",
@@ -22,16 +26,6 @@
         "."
       ]
     },
-    "brave-search": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@brave/brave-search-mcp-server"
-      ],
-      "env": {
-        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
-      }
-    },
     "youtube": {
       "command": "npx",
       "args": [
@@ -40,6 +34,30 @@
       ],
       "env": {
         "YOUTUBE_API_KEY": "${YOUTUBE_API_KEY}"
+      }
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@1.10.1",
+        "--executablePath",
+        "/opt/pw-browsers/chromium",
+        "--headless",
+        "--isolated",
+        "--chrome-arg=--no-sandbox",
+        "--chrome-arg=--disable-setuid-sandbox"
+      ]
+    },
+    "basic-memory": {
+      "command": "sh",
+      "args": [
+        "-c",
+        "BASIC_MEMORY_HOME=\"$(pwd)/memory\" exec uvx basic-memory==0.22.1 mcp"
+      ],
+      "env": {
+        "BASIC_MEMORY_CONFIG_DIR": ".basic-memory/v2",
+        "BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED": "false"
       }
     },
     "freellmapi": {
