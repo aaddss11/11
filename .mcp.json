@@ -50,13 +50,12 @@
       ]
     },
     "basic-memory": {
-      "command": "uvx",
+      "command": "sh",
       "args": [
-        "basic-memory",
-        "mcp"
+        "-c",
+        "BASIC_MEMORY_HOME=\"$(pwd)/memory\" exec uvx basic-memory==0.22.1 mcp"
       ],
       "env": {
-        "BASIC_MEMORY_HOME": "memory",
         "BASIC_MEMORY_CONFIG_DIR": ".basic-memory",
         "BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED": "false"
       }
