@@ -104,13 +104,21 @@ Use these skills in this order for each kind of task. Skip a step only when it c
 | Purpose | Skills, in order |
 |---|---|
 | Rambling or half-formed idea | `thinking-out-loud` → `superpowers:brainstorming` |
-| New feature | `superpowers:brainstorming` → `superpowers:writing-plans` → `superpowers:test-driven-development` → `superpowers:verification-before-completion` → `ponytail:ponytail-review` |
-| Bug fix | `superpowers:systematic-debugging` → `superpowers:test-driven-development` → `superpowers:verification-before-completion` |
-| Understanding unfamiliar code | `graphify` → `commit-archaeologist` |
-| Before opening a PR | `scope-creep-detector` → `ponytail:ponytail-review` |
-| Whole-repo health check | `ponytail:ponytail-audit` → `dependency-doctor` → `ponytail:ponytail-debt` |
-| Web page or UI | `design-taste-frontend` → `ponytail:ponytail-review` |
+| Stress-testing a plan or design | `mattpocock-skills:grilling` → `mattpocock-skills:prototype` (when only a working sketch can answer it) |
+| New feature | `superpowers:brainstorming` → `superpowers:writing-plans` → `mattpocock-skills:tdd` → `superpowers:verification-before-completion` → `ponytail:ponytail-review` |
+| Bug fix | `mattpocock-skills:diagnosing-bugs` → `mattpocock-skills:tdd` → `superpowers:verification-before-completion` |
+| Build or type errors | `ecc:build-fix` |
+| Library or API question | `ecc:documentation-lookup` → `mattpocock-skills:research` (when it needs a written-up answer) |
+| Understanding unfamiliar code | `graphify` → `ecc:codebase-onboarding` → `commit-archaeologist` |
+| Module boundaries and naming | `mattpocock-skills:codebase-design` → `mattpocock-skills:domain-modeling` |
+| API or database change | `ecc:api-design` / `ecc:database-migrations` → `mattpocock-skills:tdd` |
+| Web page or UI | `design-taste-frontend` → `ecc:frontend-patterns` → `ecc:browser-qa` → `ponytail:ponytail-review` |
+| End-to-end tests | `ecc:e2e-testing` |
+| Before opening a PR | `scope-creep-detector` → `mattpocock-skills:code-review` → `ponytail:ponytail-review` → `ecc:security-review` (input, auth, secrets) → `mattpocock-skills:pr` |
+| Whole-repo health check | `ponytail:ponytail-audit` → `ecc:security-scan` → `dependency-doctor` → `ponytail:ponytail-debt` |
+| Steps only a human can do (credentials, infra) | `mattpocock-skills:wizard` |
 | Writing for people to read | `first-reader` |
-| MCP server | `mcp-builder` → `superpowers:test-driven-development` |
+| Writing skills, CLAUDE.md or agent prompts | `mattpocock-skills:writing-for-agents` |
+| MCP server | `mcp-builder` → `ecc:mcp-server-patterns` → `mattpocock-skills:tdd` |
 | Picking an old side project | `project-graveyard` |
 | No skill fits | `find-skills` |
