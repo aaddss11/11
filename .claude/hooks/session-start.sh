@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install the ECC, superpowers, mattpocock-skills and karpathy-skills plugins and set ECC's hook profile to standard in cloud sessions.
+# Fetch the awesome-llm-apps submodule, install the ECC, superpowers, mattpocock-skills and karpathy-skills plugins and set ECC's hook profile to standard in cloud sessions.
 set -euo pipefail
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
@@ -7,6 +7,8 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
 fi
 
 cd "$CLAUDE_PROJECT_DIR"
+
+git submodule update --init --depth 1
 
 if ! claude plugin list --json 2>/dev/null | grep -q '"id": "ecc@ecc"'; then
   claude plugin marketplace add affaan-m/ECC
