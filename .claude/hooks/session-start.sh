@@ -1,5 +1,5 @@
 #!/bin/bash
-# Fetch the awesome-llm-apps submodule, install the ECC, superpowers, mattpocock-skills and karpathy-skills plugins and set ECC's hook profile to standard in cloud sessions.
+# Fetch the awesome-llm-apps submodule, install the ECC, superpowers, mattpocock-skills, karpathy-skills and ponytail plugins and set ECC's hook profile to standard in cloud sessions.
 set -euo pipefail
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
@@ -17,7 +17,8 @@ fi
 
 for entry in obra/superpowers-marketplace:superpowers@superpowers-marketplace \
              mattpocock/skills:mattpocock-skills@mattpocock \
-             multica-ai/andrej-karpathy-skills:andrej-karpathy-skills@karpathy-skills; do
+             multica-ai/andrej-karpathy-skills:andrej-karpathy-skills@karpathy-skills \
+             DietrichGebert/ponytail:ponytail@ponytail; do
   repo=${entry%%:*}
   plugin=${entry#*:}
   if ! claude plugin list --json 2>/dev/null | grep -q "\"id\": \"$plugin\""; then

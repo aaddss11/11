@@ -25,7 +25,8 @@
     "ecc@ecc": true,
     "superpowers@superpowers-marketplace": true,
     "mattpocock-skills@mattpocock": true,
-    "andrej-karpathy-skills@karpathy-skills": true
+    "andrej-karpathy-skills@karpathy-skills": true,
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "ecc": {
@@ -50,6 +51,12 @@
       "source": {
         "source": "github",
         "repo": "multica-ai/andrej-karpathy-skills"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
       }
     }
   }
