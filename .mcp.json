@@ -57,7 +57,8 @@
       ],
       "env": {
         "BASIC_MEMORY_HOME": "memory",
-        "BASIC_MEMORY_CONFIG_DIR": ".basic-memory"
+        "BASIC_MEMORY_CONFIG_DIR": ".basic-memory",
+        "BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED": "false"
       }
     }
   }
