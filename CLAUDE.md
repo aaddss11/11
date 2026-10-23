@@ -93,5 +93,6 @@ The `basic-memory` MCP server stores notes as Markdown in `memory/`, and a Stop 
 
 - On other branches, `memory/` changes stay uncommitted in the working tree but are already on `main`. The Stop hook hides them from `git status` (`.git/info/exclude` and `skip-worktree`): don't commit them to the branch, and if they block a merge or pull, run `git ls-files -z memory | xargs -0 git update-index --no-skip-worktree`, then discard them (`git checkout -- memory`, delete untracked notes) first.
 - The Stop hook only adds and updates notes on `main`; it never deletes one, so a note deleted locally stays on `main` until removed there by hand.
+- It pushes only notes this clone changed since its last sync (recorded in the local ref `refs/memory/synced`). A note changed only on `main` is copied into the working tree instead of being overwritten. A note changed on both sides is merged with `git merge-file --union`, which keeps both sides' lines.
 - Without being asked, save a note with `write_note` when you learn something worth keeping across sessions: a decision and its reason, a user preference, a project fact that took effort to find. Don't save routine task chatter or anything secret.
 - Before starting work, `search_notes` for related notes and build on them; update an existing note rather than writing a duplicate.
