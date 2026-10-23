@@ -59,6 +59,13 @@
         "BASIC_MEMORY_CONFIG_DIR": ".basic-memory/v2",
         "BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED": "false"
       }
+    },
+    "freellmapi": {
+      "type": "http",
+      "url": "${FREELLMAPI_URL:-http://localhost:3001}/mcp",
+      "headers": {
+        "Authorization": "Bearer ${FREELLMAPI_API_KEY}"
+      }
     }
   }
 }
