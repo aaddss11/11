@@ -96,3 +96,21 @@ The `basic-memory` MCP server stores notes as Markdown in `memory/`, and a Stop 
 - When another session changed the same note on `main`, the hook merges both versions line by line (`git merge-file --union`) and writes the result back to the local note, so lines from both sessions are kept.
 - Without being asked, save a note with `write_note` when you learn something worth keeping across sessions: a decision and its reason, a user preference, a project fact that took effort to find. Don't save routine task chatter or anything secret.
 - Before starting work, `search_notes` for related notes and build on them; update an existing note rather than writing a duplicate.
+
+## Skills by purpose
+
+Use these skills in this order for each kind of task. Skip a step only when it clearly doesn't apply.
+
+| Purpose | Skills, in order |
+|---|---|
+| Rambling or half-formed idea | `thinking-out-loud` → `superpowers:brainstorming` |
+| New feature | `superpowers:brainstorming` → `superpowers:writing-plans` → `superpowers:test-driven-development` → `superpowers:verification-before-completion` → `ponytail:ponytail-review` |
+| Bug fix | `superpowers:systematic-debugging` → `superpowers:test-driven-development` → `superpowers:verification-before-completion` |
+| Understanding unfamiliar code | `graphify` → `commit-archaeologist` |
+| Before opening a PR | `scope-creep-detector` → `ponytail:ponytail-review` |
+| Whole-repo health check | `ponytail:ponytail-audit` → `dependency-doctor` → `ponytail:ponytail-debt` |
+| Web page or UI | `design-taste-frontend` → `ponytail:ponytail-review` |
+| Writing for people to read | `first-reader` |
+| MCP server | `mcp-builder` → `superpowers:test-driven-development` |
+| Picking an old side project | `project-graveyard` |
+| No skill fits | `find-skills` |
