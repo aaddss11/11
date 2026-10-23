@@ -99,26 +99,43 @@ The `basic-memory` MCP server stores notes as Markdown in `memory/`, and a Stop 
 
 ## Skills by purpose
 
-Use these skills in this order for each kind of task. Skip a step only when it clearly doesn't apply.
+### Overlaps with ECC's flow: ask first
+
+These tasks are also covered by ECC's own flow. Before starting one, ask the user once which to follow: ECC's flow or this table's. Skip the question when the user already ran an ECC command (`/plan`, `/code-review`, `/orch-*`, `/prp-*`) or named the skills to use. Follow that one flow only; never add the other's steps on top. Leave ECC's flow itself unchanged.
+
+| Purpose | This table's flow | ECC's flow |
+|---|---|---|
+| New feature | `superpowers:brainstorming` → `superpowers:writing-plans` → `mattpocock-skills:tdd` → `superpowers:verification-before-completion` → `ponytail:ponytail-review` | `/orch-add-feature`, or `/plan` → `ecc:tdd-workflow` → `/code-review` |
+| Changing an existing feature | `mattpocock-skills:tdd` → `superpowers:verification-before-completion` → `ponytail:ponytail-review` | `/orch-change-feature` |
+| Bug fix | `mattpocock-skills:diagnosing-bugs` → `mattpocock-skills:tdd` → `superpowers:verification-before-completion` | `/orch-fix-defect` |
+| Refactor | `mattpocock-skills:codebase-design` → `mattpocock-skills:tdd` → `ponytail:ponytail-review` | `/orch-refine-code` |
+| Implementation plan | `superpowers:writing-plans` | `/plan` or `/prp-plan` |
+| Code review | `mattpocock-skills:code-review` → `ponytail:ponytail-review` | `/code-review` or `/orch-review` |
+
+### No overlap: use automatically
+
+Invoke these without asking whenever the task matches, in this order. Skip a step only when it clearly doesn't apply.
 
 | Purpose | Skills, in order |
 |---|---|
 | Rambling or half-formed idea | `thinking-out-loud` → `superpowers:brainstorming` |
 | Stress-testing a plan or design | `mattpocock-skills:grilling` → `mattpocock-skills:prototype` (when only a working sketch can answer it) |
-| New feature | `superpowers:brainstorming` → `superpowers:writing-plans` → `mattpocock-skills:tdd` → `superpowers:verification-before-completion` → `ponytail:ponytail-review` |
-| Bug fix | `mattpocock-skills:diagnosing-bugs` → `mattpocock-skills:tdd` → `superpowers:verification-before-completion` |
 | Build or type errors | `ecc:build-fix` |
 | Library or API question | `ecc:documentation-lookup` → `mattpocock-skills:research` (when it needs a written-up answer) |
 | Understanding unfamiliar code | `graphify` → `ecc:codebase-onboarding` → `commit-archaeologist` |
-| Module boundaries and naming | `mattpocock-skills:codebase-design` → `mattpocock-skills:domain-modeling` |
-| API or database change | `ecc:api-design` / `ecc:database-migrations` → `mattpocock-skills:tdd` |
-| Web page or UI | `design-taste-frontend` → `ecc:frontend-patterns` → `ecc:browser-qa` → `ponytail:ponytail-review` |
+| Module boundaries and naming | `mattpocock-skills:domain-modeling` |
+| API or database change | `ecc:api-design` / `ecc:database-migrations` |
+| Web page or UI | `design-taste-frontend` → `ecc:frontend-patterns` → `ecc:browser-qa` |
 | End-to-end tests | `ecc:e2e-testing` |
-| Before opening a PR | `scope-creep-detector` → `mattpocock-skills:code-review` → `ponytail:ponytail-review` → `ecc:security-review` (input, auth, secrets) → `mattpocock-skills:pr` |
+| Before opening a PR | `scope-creep-detector` → `ecc:security-review` (input, auth, secrets) → `mattpocock-skills:pr` |
 | Whole-repo health check | `ponytail:ponytail-audit` → `ecc:security-scan` → `dependency-doctor` → `ponytail:ponytail-debt` |
 | Steps only a human can do (credentials, infra) | `mattpocock-skills:wizard` |
-| Writing for people to read | `first-reader` |
 | Writing skills, CLAUDE.md or agent prompts | `mattpocock-skills:writing-for-agents` |
-| MCP server | `mcp-builder` → `ecc:mcp-server-patterns` → `mattpocock-skills:tdd` |
+| MCP server | `mcp-builder` → `ecc:mcp-server-patterns` |
+| Research or market analysis | `ecc:deep-research` / `ecc:market-research` |
+| Article, post or other content | `ecc:article-writing` / `ecc:content-engine` → `first-reader` |
+| Marketing | `ecc:marketing-campaign` → `first-reader` |
+| Investor material | `ecc:investor-materials` → `first-reader` |
+| Video | `ecc:video-editing` |
 | Picking an old side project | `project-graveyard` |
 | No skill fits | `find-skills` |
