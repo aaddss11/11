@@ -52,7 +52,7 @@
     "basic-memory": {
       "command": "uvx",
       "args": [
-        "basic-memory",
+        "basic-memory@0.22.1",
         "mcp"
       ],
       "env": {
