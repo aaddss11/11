@@ -56,7 +56,7 @@
         "BASIC_MEMORY_HOME=\"$(pwd)/memory\" exec uvx basic-memory==0.22.1 mcp"
       ],
       "env": {
-        "BASIC_MEMORY_CONFIG_DIR": ".basic-memory",
+        "BASIC_MEMORY_CONFIG_DIR": ".basic-memory/v2",
         "BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED": "false"
       }
     }
